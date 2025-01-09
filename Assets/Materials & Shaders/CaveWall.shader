@@ -113,7 +113,6 @@ Shader "CaveWall"
 
             // -------------------------------------
             // Shader Stages
-#pragma alpha_clipping
 #pragma vertex LitPassVertex
 #pragma fragment LitPassFragment
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -133,12 +132,11 @@ float4 LitPassFragment(MyVaryings input) : SV_Target
     float4 scanMaskColor = SAMPLE_TEXTURE2D(_ScanMask, sampler_ScanMask, input.texCoord.xy);
     if (scanMaskColor.r < 0.5)
     {
-        // Zaciemnienie obszaru
-        return float4(0.0, 0.0, 0.0, 1.0);
+        return float4(0.0, 0.0, 0.0, 1.0); // Zaciemnienie
     }
-    // Widoczny obszar
-    return float4(1.0, 0.0, 0.0, 1.0); // Testowy czerwony kolor
+    return float4(1.0, 0.0, 0.0, 1.0); // Testowy czerwony
 }
+
 
 
 

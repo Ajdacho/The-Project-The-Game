@@ -5,7 +5,7 @@ using UnityEngine;
 public class CaveVisibilityManager : MonoBehaviour
 {
     public Material scannableMaterial; 
-    public float scanRadius = 5f; 
+    public float scanRadius = 9f; 
     public float scanFadeDuration = 1f; 
 
     private Transform player;
