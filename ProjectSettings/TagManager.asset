@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Pickupable
   - Scannable
+<<<<<<< HEAD
+=======
+  - Audio
+>>>>>>> 03e551f (Dodanie plików audio / efektów dźwiękowych / ambientu w tle)
   layers:
   - Default
   - TransparentFX
