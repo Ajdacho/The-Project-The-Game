@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
@@ -24,30 +23,3 @@ public class PlayerCam : MonoBehaviour
         playerBody.Rotate(Vector3.up * mouseX);
     }
 }
-=======
-using UnityEngine;
-
-public class PlayerCam : MonoBehaviour
-{
-    public float mouseSensitivity = 80f; 
-    public Transform playerBody;
-    private float xRotation = 0f;
-
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    void Update()
-    {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
-        playerBody.Rotate(Vector3.up * mouseX);
-    }
-}
->>>>>>> 03e551f (Dodanie plików audio / efektów dźwiękowych / ambientu w tle)
