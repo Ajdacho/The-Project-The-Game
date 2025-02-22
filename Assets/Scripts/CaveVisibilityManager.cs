@@ -12,16 +12,14 @@ public class CaveVisibilityManager : MonoBehaviour
     private Transform player;
     private Inventory playerInventory;
     private float lastScanTime = -Mathf.Infinity;
+    private List<Renderer> scannableRenderers = new List<Renderer>();
 
     AudioManager AudioManager;
-   /*
      private void Awake()
     {
         AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
-   */ 
-   // dałem to w komentarz, bo przy starcie odpalało się audio z jakiegoś powodu. Nie wiem do końca czy ten sampel jest potrzebny bo skaner i pickup nie działa wiec nie mam jak sprawdzić :(((
-   // tldr: guwnoguwnoguwno filip napraw skaner #wkurwiony
+
    
     void Start()
     {
@@ -62,7 +60,19 @@ public class CaveVisibilityManager : MonoBehaviour
                 }
             }
         }
+        Renderer[] allRenderers = FindObjectsOfType<Renderer>();
 
+        foreach (Renderer renderer in allRenderers)
+        {
+            foreach (var mat in renderer.materials)
+            {
+                if (mat.shader == scannableMaterial.shader)
+                {
+                    scannableRenderers.Add(renderer);
+                    break;
+                }
+            }
+        }
         RevealArea(player.position, scanRadius);
     }
 
@@ -153,20 +163,20 @@ public class CaveVisibilityManager : MonoBehaviour
     }
     private void ResetScannableObjects()
     {
-        Renderer[] allRenderers = FindObjectsOfType<Renderer>();
-
-        foreach (Renderer renderer in allRenderers)
+        Vector4 resetPosition = new Vector4(0, 100, 0);
+        foreach (Renderer renderer in scannableRenderers)
         {
             foreach (var mat in renderer.materials)
             {
-                if (mat.shader == scannableMaterial.shader)  // Resetujemy tylko materiały niewidoczne
+                if (mat.shader == scannableMaterial.shader)
                 {
                     mat.SetFloat("_ScanRadius", 0f);
-                    mat.SetVector("_ScanCenter", Vector4.zero);
+                    mat.SetVector("_ScanCenter", resetPosition);
                 }
             }
         }
     }
+
 
     private IEnumerator FadeMaterialRadius(Material material, float targetRadius, float duration)
     {
