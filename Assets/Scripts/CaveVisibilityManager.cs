@@ -14,10 +14,15 @@ public class CaveVisibilityManager : MonoBehaviour
     private float lastScanTime = -Mathf.Infinity;
 
     AudioManager AudioManager;
-    private void Awake()
+   /*
+     private void Awake()
     {
         AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
+   */ 
+   // dałem to w komentarz, bo przy starcie odpalało się audio z jakiegoś powodu. Nie wiem do końca czy ten sampel jest potrzebny bo skaner i pickup nie działa wiec nie mam jak sprawdzić :(((
+   // tldr: guwnoguwnoguwno filip napraw skaner #wkurwiony
+   
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
