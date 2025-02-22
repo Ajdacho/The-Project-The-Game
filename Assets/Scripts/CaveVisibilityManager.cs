@@ -7,7 +7,7 @@ public class CaveVisibilityManager : MonoBehaviour
     public Material scannableMaterial; 
     public float scanRadius = 9f; 
     public float scanFadeDuration = 1f;
-    public float scanCooldown = 3f;
+    public float scanCooldown = 2f;
 
     private Transform player;
     private Inventory playerInventory;
@@ -110,6 +110,7 @@ public class CaveVisibilityManager : MonoBehaviour
 
     private void RevealArea(Vector3 position, float radius)
     {
+        ResetScannableObjects();
         AudioManager.PlaySFX(AudioManager.Audio_Scanner);
         Debug.Log($"Revealing area at {position} with radius {radius}.");
 
@@ -145,6 +146,22 @@ public class CaveVisibilityManager : MonoBehaviour
 
         }
     }
+    private void ResetScannableObjects()
+    {
+        Renderer[] allRenderers = FindObjectsOfType<Renderer>();
+
+        foreach (Renderer renderer in allRenderers)
+        {
+            foreach (var mat in renderer.materials)
+            {
+                if (mat.shader == scannableMaterial.shader)  // Resetujemy tylko materiały niewidoczne
+                {
+                    mat.SetFloat("_ScanRadius", 0f);
+                    mat.SetVector("_ScanCenter", Vector4.zero);
+                }
+            }
+        }
+    }
 
     private IEnumerator FadeMaterialRadius(Material material, float targetRadius, float duration)
     {
@@ -168,4 +185,3 @@ public class CaveVisibilityManager : MonoBehaviour
         material.SetFloat("_ScanRadius", targetRadius);
     }
 }
-//>>>>>>> 03e551f (Dodanie plików audio / efektów dźwiękowych / ambientu w tle)
