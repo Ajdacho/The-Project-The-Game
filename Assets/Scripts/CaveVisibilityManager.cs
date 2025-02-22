@@ -6,10 +6,12 @@ public class CaveVisibilityManager : MonoBehaviour
 {
     public Material scannableMaterial; 
     public float scanRadius = 9f; 
-    public float scanFadeDuration = 1f; 
+    public float scanFadeDuration = 1f;
+    public float scanCooldown = 3f;
 
     private Transform player;
     private Inventory playerInventory;
+    private float lastScanTime = -Mathf.Infinity;
 
     AudioManager AudioManager;
     private void Awake()
@@ -65,27 +67,34 @@ public class CaveVisibilityManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && PlayerHasScanner())
         {
-            if (Camera.main == null)
+            if (Time.time >= lastScanTime + scanCooldown)
             {
-                Debug.LogError("Main Camera not found in the scene.");
-                return;
-            }
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Camera.main == null)
+                {
+                    Debug.LogError("Main Camera not found in the scene.");
+                    return;
+                }
 
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                Debug.Log($"Revealing area at {hit.point}.");
-                RevealArea(hit.point, scanRadius);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out RaycastHit hit))
+                {
+                    Debug.Log($"Revealing area at {hit.point}.");
+                    RevealArea(hit.point, scanRadius);
+                    lastScanTime = Time.time;
+                }
+                else
+                {
+                    Debug.LogWarning("Raycast did not hit any collider.");
+                }
             }
             else
             {
-                Debug.LogWarning("Raycast did not hit any collider.");
+                Debug.Log("Scan is on cooldown!");
             }
         }
     }
-
-
     private bool PlayerHasScanner()
     {
         if (playerInventory == null)

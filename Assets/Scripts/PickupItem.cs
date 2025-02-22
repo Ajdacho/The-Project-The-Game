@@ -6,6 +6,7 @@ public class PickupItem : MonoBehaviour
     public Material highlightMaterial;
     private Material originalMaterial;
     private Renderer renderer;
+    private Renderer[] renderers;
 
     AudioManager AudioManager;
 
@@ -16,9 +17,10 @@ public class PickupItem : MonoBehaviour
     private void Start()
     {
         renderer = GetComponent<Renderer>();
-        if (renderer != null)
+        renderers = GetComponentsInChildren<Renderer>();
+        if (renderers.Length > 0)
         {
-            originalMaterial = renderer.material;
+            originalMaterial = renderers[0].material;
         }
 
         if (!CompareTag("Pickupable"))
@@ -29,20 +31,24 @@ public class PickupItem : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (renderer != null && highlightMaterial != null)
+        if (renderers != null && highlightMaterial != null)
         {
-            renderer.material = highlightMaterial;
+            foreach (Renderer r in renderers)
+            {
+                r.material = highlightMaterial;
+            }
         }
     }
-
     private void OnMouseExit()
     {
-        if (renderer != null)
+        if (renderers != null)
         {
-            renderer.material = originalMaterial;
+            foreach (Renderer r in renderers)
+            {
+                r.material = originalMaterial;
+            }
         }
     }
-
     private void OnMouseDown()
     {
         if (!CompareTag("Pickupable"))
