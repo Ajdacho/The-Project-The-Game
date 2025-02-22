@@ -5,10 +5,25 @@ public class Inventory : MonoBehaviour
 {
     public List<GameObject> items = new List<GameObject>();
     public GameObject scanner;
+    private GameObject FindInChildren(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+                return child.gameObject;
+
+            GameObject found = FindInChildren(child, name);
+            if (found != null)
+                return found;
+        }
+        return null;
+    }
+
     private void Start()
     {
-        scanner = transform.Find("Scanner")?.gameObject;
+        scanner = FindInChildren(transform, "ScannerHold");
     }
+
     public void AddItem(GameObject item)
     {
         items.Add(item);

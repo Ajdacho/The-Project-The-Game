@@ -8,6 +8,7 @@ public class CaveVisibilityManager : MonoBehaviour
     public float scanRadius = 9f; 
     public float scanFadeDuration = 1f;
     public float scanCooldown = 2f;
+    public bool firstScan = true;
 
     private Transform player;
     private Inventory playerInventory;
@@ -29,18 +30,6 @@ public class CaveVisibilityManager : MonoBehaviour
             playerInventory = player.GetComponent<Inventory>();
         }
 
-        if (player == null)
-        {
-            Debug.LogError("Player object with tag 'Player' not found in the scene.");
-            return;
-        }
-
-        if (playerInventory == null)
-        {
-            Debug.LogError("Player object is missing the 'Inventory' component.");
-            return;
-        }
-
         Debug.Log("Player and Inventory successfully initialized.");
 
         Collider[] colliders = Physics.OverlapSphere(player.position, scanRadius);
@@ -55,7 +44,6 @@ public class CaveVisibilityManager : MonoBehaviour
                     {
                         mat.SetFloat("_ScanRadius", 0f);
                         mat.SetVector("_ScanCenter", new Vector4(player.position.x, player.position.y, player.position.z, 1));
-                        Debug.Log($"Initialized material {mat.name} for {renderer.name}.");
                     }
                 }
             }
@@ -84,18 +72,10 @@ public class CaveVisibilityManager : MonoBehaviour
         {
             if (Time.time >= lastScanTime + scanCooldown)
             {
-
-                if (Camera.main == null)
-                {
-                    Debug.LogError("Main Camera not found in the scene.");
-                    return;
-                }
-
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    Debug.Log($"Revealing area at {hit.point}.");
                     RevealArea(hit.point, scanRadius);
                     lastScanTime = Time.time;
                 }
@@ -126,8 +106,12 @@ public class CaveVisibilityManager : MonoBehaviour
     private void RevealArea(Vector3 position, float radius)
     {
         ResetScannableObjects();
+        
+        if (!firstScan)
+        {
         AudioManager.PlaySFX(AudioManager.Audio_Scanner);
-        Debug.Log($"Revealing area at {position} with radius {radius}.");
+        }
+        firstScan = false;
 
         Collider[] colliders = Physics.OverlapSphere(position, radius);
         if (colliders.Length == 0)
@@ -145,8 +129,6 @@ public class CaveVisibilityManager : MonoBehaviour
             if (renderer == null)
                 continue;
 
-            Debug.Log($"Processing renderer: {renderer.name}");
-
             foreach (var mat in renderer.materials)
             {
                 if (mat.shader == scannableMaterial.shader)
@@ -154,7 +136,6 @@ public class CaveVisibilityManager : MonoBehaviour
                     mat.SetVector("_ScanCenter", new Vector4(position.x, position.y, position.z, 1));
                     mat.SetFloat("_ScanRadius", radius);
 
-                    Debug.Log($"Set _ScanCenter to {position} and _ScanRadius to {radius} on material {mat.name}.");
                     StartCoroutine(FadeMaterialRadius(mat, radius, scanFadeDuration));
                 }
             }
