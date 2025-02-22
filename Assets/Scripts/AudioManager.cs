@@ -11,11 +11,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip Audio_Scanner;
     public AudioClip Audio_Pickup;
 
-    private void Start()
-    {
-        musicSource.clip = Audio_BackgroundNoise;
-        musicSource.Play();
-    }
 
     public void PlaySFX(AudioClip clip)
     {
