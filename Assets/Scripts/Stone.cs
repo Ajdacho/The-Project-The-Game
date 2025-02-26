@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour
 {
-    public Inventory playerInventory; 
-    //public GameObject explosionEffect;
-    public Transform player; 
-    public float triggerDistance = 5.0f; 
+    public Inventory playerInventory;
+    public GameObject explosionEffect;
+    public Transform player;
+    public float triggerDistance = 5.0f;
+    private bool hasExploded = false;
 
     private void Update()
     {
-        if (player == null)
+        if (player == null || hasExploded)
         {
             return;
         }
@@ -17,7 +18,6 @@ public class Stone : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance <= triggerDistance)
         {
-
             if (playerInventory == null)
             {
                 return;
@@ -25,9 +25,17 @@ public class Stone : MonoBehaviour
 
             if (playerInventory.HasItem("Matches") && playerInventory.HasItem("Dynamite"))
             {
+                hasExploded = true;
                 Debug.Log("Stone destroyed");
-                //if (explosionEffect)
-                //    Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
+                playerInventory.RemoveItem("Matches");
+                playerInventory.RemoveItem("Dynamite");
+
+                if (explosionEffect)
+                {
+                    GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                    Destroy(explosion, 3f);
+                }
 
                 Destroy(gameObject);
             }

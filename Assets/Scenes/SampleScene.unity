@@ -1081,12 +1081,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113492082}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 1, z: 2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 871824272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &120633885 stripped
 GameObject:
@@ -2292,6 +2292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 327484648}
+  explosionEffect: {fileID: 1072331886}
   player: {fileID: 327484646}
   triggerDistance: 5
 --- !u!1 &269336987 stripped
@@ -2705,7 +2706,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
-  scanner: {fileID: 0}
 --- !u!143 &327484649
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4832,6 +4832,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
+    - target: {fileID: 4101439447083662981, guid: 67d78b06dcff50843a3004ee1ea2060c, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101439447083662981, guid: 67d78b06dcff50843a3004ee1ea2060c, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6022,12 +6030,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652605191}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 1, z: 2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 871824272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654887062 stripped
 GameObject:
@@ -7423,7 +7431,7 @@ MonoBehaviour:
   Audio_BackgroundNoise: {fileID: 8300000, guid: c3bf92afd033a1e45af000971f47c1c1, type: 3}
   Audio_Scanner: {fileID: 8300000, guid: 3b8e47308dfe6494a94fa14cad68e649, type: 3}
   Audio_Pickup: {fileID: 8300000, guid: f82e0be7c7326744b8327bfeb0c167ed, type: 3}
-  Audio_Paper: {fileID: 0}
+  Audio_Paper: {fileID: 8300000, guid: 09a69d4e770fbb04e88a6372a26dfa52, type: 3}
 --- !u!4 &871824272
 Transform:
   m_ObjectHideFlags: 0
@@ -7436,7 +7444,9 @@ Transform:
   m_LocalPosition: {x: 2, y: 1, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 652605193}
+  - {fileID: 113492084}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &886529366 stripped
@@ -8807,6 +8817,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1691130231}
   m_SourcePrefab: {fileID: 100100000, guid: ff3fb3190ad3ae044bbcba0646293a85, type: 3}
+--- !u!1 &1072331886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1853626508315998800, guid: 67d78b06dcff50843a3004ee1ea2060c, type: 3}
+  m_PrefabInstance: {fileID: 509641395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1074077271
 GameObject:
   m_ObjectHideFlags: 0
@@ -10685,10 +10700,10 @@ Transform:
   m_Children:
   - {fileID: 130023256}
   - {fileID: 1096598535}
+  - {fileID: 1136947647}
   - {fileID: 7682519734006188963}
   - {fileID: 2081519122387849783}
   - {fileID: 7634179140472012671}
-  - {fileID: 1136947647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1380581207 stripped
@@ -15046,7 +15061,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4999a3ad194cd6b46bd1c35b947be179, type: 2}
     - target: {fileID: 919132149155446097, guid: b699c309c5efdfd44a0019b5014698ef, type: 3}
       propertyPath: m_Name
-      value: mine
+      value: Mine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -20728,8 +20743,6 @@ SceneRoots:
   - {fileID: 1306501394}
   - {fileID: 1978658874}
   - {fileID: 871824272}
-  - {fileID: 652605193}
-  - {fileID: 113492084}
   - {fileID: 1515972832}
   - {fileID: 535153487}
   - {fileID: 1360197357}

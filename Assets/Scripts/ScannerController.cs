@@ -9,11 +9,6 @@ public class ScannerController
     public float targetHeight = 0.65f;
     public float liftSpeed = 2.4f;
 
-    public ScannerController(GameObject scanner)
-    {
-        this.scanner = scanner;
-    }
-
     public void ActivateScanner()
     {
         scanner = FindInactiveObject("ScannerHold");
