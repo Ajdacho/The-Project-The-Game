@@ -1895,7 +1895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 327484648}
   player: {fileID: 327484646}
-  triggerDistance: 1
+  triggerDistance: 5
 --- !u!1 &269336987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7146521406498821007, guid: ff3fb3190ad3ae044bbcba0646293a85, type: 3}
@@ -2255,7 +2255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b682ee6161f9664a8e1706e46091901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 5
   gravity: -9.81
   jumpHeight: 1
 --- !u!114 &327484648
@@ -2271,7 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
-  scanner: {fileID: 1760827704}
+  scanner: {fileID: 0}
 --- !u!143 &327484649
 CharacterController:
   m_ObjectHideFlags: 0

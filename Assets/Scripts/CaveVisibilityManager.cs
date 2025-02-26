@@ -144,9 +144,16 @@ public class CaveVisibilityManager : MonoBehaviour
     private void ResetScannableObjects()
     {
         Vector4 resetPosition = new Vector4(0, 100, 0);
-        foreach (Renderer renderer in scannableRenderers)
+
+        for (int i = scannableRenderers.Count - 1; i >= 0; i--)
         {
-            foreach (var mat in renderer.materials)
+            if (scannableRenderers[i] == null)
+            {
+                scannableRenderers.RemoveAt(i);
+                continue;
+            }
+
+            foreach (var mat in scannableRenderers[i].materials)
             {
                 if (mat.shader == scannableMaterial.shader)
                 {
@@ -156,6 +163,7 @@ public class CaveVisibilityManager : MonoBehaviour
             }
         }
     }
+
 
 
     private IEnumerator FadeMaterialRadius(Material material, float targetRadius, float duration)
