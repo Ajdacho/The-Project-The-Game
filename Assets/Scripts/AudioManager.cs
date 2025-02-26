@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Audio_BackgroundNoise;
     public AudioClip Audio_Scanner;
     public AudioClip Audio_Pickup;
-
+    public AudioClip Audio_Paper;
 
     public void PlaySFX(AudioClip clip)
     {
