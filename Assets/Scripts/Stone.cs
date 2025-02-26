@@ -11,7 +11,6 @@ public class Stone : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.LogError("Brak przypisanego gracza w Stone.cs!");
             return;
         }
 
