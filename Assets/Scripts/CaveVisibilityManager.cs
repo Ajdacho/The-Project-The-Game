@@ -99,7 +99,6 @@ public class CaveVisibilityManager : MonoBehaviour
         }
 
         bool hasScanner = playerInventory.HasItem("Scanner");
-        Debug.Log($"PlayerHasScanner check: {hasScanner}");
         return hasScanner;
     }
 

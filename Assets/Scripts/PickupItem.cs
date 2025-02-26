@@ -18,10 +18,11 @@ public class PickupItem : MonoBehaviour
     {
         renderer = GetComponent<Renderer>();
         renderers = GetComponentsInChildren<Renderer>();
-        if (renderers.Length > 0)
+        if (renderers.Length > 0 && renderers[0] != null)
         {
             originalMaterial = renderers[0].material;
         }
+
 
         if (!CompareTag("Pickupable"))
         {
@@ -71,4 +72,3 @@ public class PickupItem : MonoBehaviour
         }
     }
 }
-//>>>>>>> 03e551f (Dodanie plików audio / efektów dźwiękowych / ambientu w tle)
