@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
+    AudioManager AudioManager;
     Resolution[] resolutions;
     void Start()
     {
@@ -72,7 +73,9 @@ public class PauseMenu : MonoBehaviour
 
     public void gameExit()
     {
-        Debug.Log("guwnoguwnoguwno");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
         Application.Quit();
     }
     public void SetVolume(float volume)
@@ -89,4 +92,3 @@ public class PauseMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 }
-

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Stone : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Stone : MonoBehaviour
     public Transform player;
     public float triggerDistance = 5.0f;
     private bool hasExploded = false;
+    AudioManager audioManager;
 
     private void Update()
     {
@@ -25,6 +27,7 @@ public class Stone : MonoBehaviour
 
             if (playerInventory.HasItem("Matches") && playerInventory.HasItem("Dynamite"))
             {
+                audioManager.PlaySFX(audioManager.Audio_Explosion); // kaput
                 hasExploded = true;
                 Debug.Log("Stone destroyed");
 

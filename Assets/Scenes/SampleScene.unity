@@ -3657,7 +3657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: -70}
+  m_AnchoredPosition: {x: 25, y: -90}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &442814284
@@ -3710,7 +3710,7 @@ MonoBehaviour:
       - m_Target: {fileID: 827501403}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: setFullscreen
-        m_Mode: 0
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3719,7 +3719,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &443674519
 GameObject:
   m_ObjectHideFlags: 0
@@ -5622,7 +5622,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fullscreen?
+  m_Text: Mute ambient
 --- !u!222 &592981439
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5941,7 +5941,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -7432,6 +7432,8 @@ MonoBehaviour:
   Audio_Scanner: {fileID: 8300000, guid: 3b8e47308dfe6494a94fa14cad68e649, type: 3}
   Audio_Pickup: {fileID: 8300000, guid: f82e0be7c7326744b8327bfeb0c167ed, type: 3}
   Audio_Paper: {fileID: 8300000, guid: 09a69d4e770fbb04e88a6372a26dfa52, type: 3}
+  Audio_Explosion: {fileID: 8300000, guid: d758b06ac11e0854ba7ed576b9487926, type: 3}
+  Audio_Fire: {fileID: 8300000, guid: 6a8518f932af0e242a4de44d6c00eb04, type: 3}
 --- !u!4 &871824272
 Transform:
   m_ObjectHideFlags: 0
