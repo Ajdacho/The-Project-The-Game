@@ -3371,7 +3371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b682ee6161f9664a8e1706e46091901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 5
   gravity: -9.81
   jumpHeight: 1
 --- !u!114 &327484648
@@ -3386,9 +3386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366407264316f3c41822bc6e64fadaaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 1136947646}
-  - {fileID: 1096598534}
+  items: []
 --- !u!143 &327484649
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7126,7 +7124,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -17876,7 +17874,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: b699c309c5efdfd44a0019b5014698ef, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 4999a3ad194cd6b46bd1c35b947be179, type: 2}
+      objectReference: {fileID: 2100000, guid: c659c7571354a114797f2599b9c19de0, type: 2}
     - target: {fileID: -4683669308469848369, guid: b699c309c5efdfd44a0019b5014698ef, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
