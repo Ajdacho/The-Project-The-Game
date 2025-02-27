@@ -36,9 +36,6 @@ public class ScannerController
 
         Vector3 targetPosition = new Vector3(startPosition.x, startPosition.y + targetHeight, startPosition.z);
 
-        Debug.Log($"Start Position: {startPosition}");
-        Debug.Log($"Target Position: {targetPosition}");
-
         float elapsedTime = 0;
         while (elapsedTime < targetHeight / liftSpeed)
         {
@@ -58,7 +55,6 @@ public class ScannerController
         else
             scanner.transform.position = targetPosition;
 
-        Debug.Log($"Final Position: {scanner.transform.position}");
     }
 
 }

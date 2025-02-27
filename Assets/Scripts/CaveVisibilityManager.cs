@@ -30,8 +30,6 @@ public class CaveVisibilityManager : MonoBehaviour
             playerInventory = player.GetComponent<Inventory>();
         }
 
-        Debug.Log("Player and Inventory successfully initialized.");
-
         Collider[] colliders = Physics.OverlapSphere(player.position, scanRadius);
         foreach (Collider col in colliders)
         {
@@ -83,10 +81,6 @@ public class CaveVisibilityManager : MonoBehaviour
                 {
                     Debug.LogWarning("Raycast did not hit any collider.");
                 }
-            }
-            else
-            {
-                Debug.Log("Scan is on cooldown!");
             }
         }
     }

@@ -9,6 +9,10 @@ public class Stone : MonoBehaviour
     public float triggerDistance = 5.0f;
     private bool hasExploded = false;
     AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void Update()
     {
@@ -27,7 +31,7 @@ public class Stone : MonoBehaviour
 
             if (playerInventory.HasItem("Matches") && playerInventory.HasItem("Dynamite"))
             {
-                audioManager.PlaySFX(audioManager.Audio_Explosion); // kaput
+                audioManager.PlaySFX(audioManager.Audio_Explosion);
                 hasExploded = true;
                 Debug.Log("Stone destroyed");
 
