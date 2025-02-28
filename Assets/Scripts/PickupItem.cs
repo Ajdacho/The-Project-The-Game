@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class PickupItem : MonoBehaviour
 {
     public Material highlightMaterial;
@@ -14,6 +13,7 @@ public class PickupItem : MonoBehaviour
     {
         AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
+
     private void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -22,7 +22,6 @@ public class PickupItem : MonoBehaviour
         {
             originalMaterial = renderers[0].material;
         }
-
 
         if (!CompareTag("Pickupable"))
         {
@@ -40,6 +39,7 @@ public class PickupItem : MonoBehaviour
             }
         }
     }
+
     private void OnMouseExit()
     {
         if (renderers != null)
@@ -50,6 +50,7 @@ public class PickupItem : MonoBehaviour
             }
         }
     }
+
     private void OnMouseDown()
     {
         if (!CompareTag("Pickupable"))
@@ -63,12 +64,18 @@ public class PickupItem : MonoBehaviour
         {
             inventory.AddItem(gameObject);
             gameObject.SetActive(false);
-            Debug.Log($"Picked up {gameObject.name}!");
-            AudioManager.PlaySFX(AudioManager.Audio_Pickup);
         }
         else
         {
             Debug.LogError("Inventory system not found in the scene!");
+            return;
+        }
+
+        Note note = gameObject.GetComponent<Note>();
+        if (note != null)
+        {
+            Debug.Log("Note component found, opening note...");
+            note.OpenNote(); 
         }
     }
 }
