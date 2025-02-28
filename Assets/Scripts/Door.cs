@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class Door : MonoBehaviour
 {
@@ -10,13 +11,32 @@ public class Door : MonoBehaviour
     public float rotationSpeed = 1f;
     public float detectionRange = 5f;
     private bool isOpen = false;
+    public TextMeshPro messageText;
+    public string requiredItem = "Key"; 
 
     private void Update()
     {
-        if (!isOpen && PlayerInRange() && playerInventory.HasItem("Key"))
+        if (!isOpen && PlayerInRange())
         {
-            StartCoroutine(OpenDoor());
-            isOpen = true;
+            if (playerInventory.HasItem(requiredItem))
+            {
+                StartCoroutine(OpenDoor());
+                isOpen = true;
+                messageText.gameObject.SetActive(false);
+            }
+            else
+            {
+                messageText.gameObject.SetActive(true); 
+                messageText.text = "You need key to open the door.";
+            }
+        }
+        else if (isOpen)
+        {
+            messageText.gameObject.SetActive(false);
+        }
+        else
+        {
+            messageText.gameObject.SetActive(false);
         }
     }
 

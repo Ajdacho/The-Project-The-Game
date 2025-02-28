@@ -1,5 +1,6 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
+using TMPro;
 
 public class Stone : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Stone : MonoBehaviour
     public float triggerDistance = 5.0f;
     private bool hasExploded = false;
     AudioManager audioManager;
+    public TextMeshPro messageText;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -32,24 +35,45 @@ public class Stone : MonoBehaviour
             if (playerInventory.HasItem("Matches") && playerInventory.HasItem("Dynamite"))
             {
                 audioManager.PlaySFX(audioManager.Audio_Explosion);
+
+                StartCoroutine(DelayedExplosion());
+
                 hasExploded = true;
                 Debug.Log("Stone destroyed");
-
-                playerInventory.RemoveItem("Matches");
-                playerInventory.RemoveItem("Dynamite");
-
-                if (explosionEffect)
-                {
-                    GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
-                    Destroy(explosion, 3f);
-                }
-
-                Destroy(gameObject);
             }
             else
             {
                 Debug.Log("You need match and dynamite to blow up the stone");
+
+                if (messageText != null)
+                {
+                    messageText.gameObject.SetActive(true);
+                    messageText.text = "You need match and dynamite to blow up the stone!";
+                }
             }
         }
+        else
+        {
+            if (messageText != null)
+            {
+                messageText.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private IEnumerator DelayedExplosion()
+    {
+        yield return new WaitForSeconds(1f);
+
+        playerInventory.RemoveItem("Matches");
+        playerInventory.RemoveItem("Dynamite");
+
+        if (explosionEffect)
+        {
+            GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(explosion, 3f);
+        }
+
+        Destroy(gameObject);
     }
 }
