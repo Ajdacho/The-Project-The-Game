@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CaveVisibilityManager : MonoBehaviour
 {
-    public Material scannableMaterial; 
-    public float scanRadius = 9f; 
+    public Material scannableMaterial;
+    public float scanRadius = 9f;
     public float scanFadeDuration = 1f;
     public float scanCooldown = 2f;
     public bool firstScan = true;
@@ -16,12 +16,12 @@ public class CaveVisibilityManager : MonoBehaviour
     private List<Renderer> scannableRenderers = new List<Renderer>();
 
     AudioManager AudioManager;
-     private void Awake()
+
+    private void Awake()
     {
         AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-   
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -66,24 +66,29 @@ public class CaveVisibilityManager : MonoBehaviour
     {
         if (player == null || playerInventory == null) return;
 
-        if (Input.GetMouseButtonDown(0) && PlayerHasScanner())
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Time.time >= lastScanTime + scanCooldown)
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-                if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.CompareTag("Pickupable"))
                 {
-                    RevealArea(hit.point, scanRadius);
-                    lastScanTime = Time.time;
+                    hit.collider.GetComponent<PickupItem>().Pickup();
                 }
                 else
                 {
-                    Debug.LogWarning("Raycast did not hit any collider.");
+                    if (Time.time >= lastScanTime + scanCooldown)
+                    {
+                        RevealArea(hit.point, scanRadius);
+                        lastScanTime = Time.time;
+                    }
                 }
             }
         }
     }
+
     private bool PlayerHasScanner()
     {
         if (playerInventory == null)
@@ -99,10 +104,10 @@ public class CaveVisibilityManager : MonoBehaviour
     private void RevealArea(Vector3 position, float radius)
     {
         ResetScannableObjects();
-        
+
         if (!firstScan)
         {
-        AudioManager.PlaySFX(AudioManager.Audio_Scanner);
+            AudioManager.PlaySFX(AudioManager.Audio_Scanner);
         }
         firstScan = false;
 
@@ -135,6 +140,7 @@ public class CaveVisibilityManager : MonoBehaviour
 
         }
     }
+
     private void ResetScannableObjects()
     {
         Vector4 resetPosition = new Vector4(0, 100, 0);
@@ -157,8 +163,6 @@ public class CaveVisibilityManager : MonoBehaviour
             }
         }
     }
-
-
 
     private IEnumerator FadeMaterialRadius(Material material, float targetRadius, float duration)
     {

@@ -50,14 +50,15 @@ public class PickupItem : MonoBehaviour
             }
         }
     }
-
-    private void OnMouseDown()
+    public void Pickup()
     {
         if (!CompareTag("Pickupable"))
         {
             Debug.LogError($"Object {gameObject.name} does not have the 'Pickupable' tag!");
             return;
         }
+
+        AudioManager.PlaySFX(AudioManager.Audio_Pickup);
 
         Inventory inventory = FindObjectOfType<Inventory>();
         if (inventory != null)
@@ -75,7 +76,7 @@ public class PickupItem : MonoBehaviour
         if (note != null)
         {
             Debug.Log("Note component found, opening note...");
-            note.OpenNote(); 
+            note.OpenNote();
         }
     }
 }
