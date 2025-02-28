@@ -132,14 +132,41 @@ public class CaveVisibilityManager : MonoBehaviour
                 if (mat.shader == scannableMaterial.shader)
                 {
                     mat.SetVector("_ScanCenter", new Vector4(position.x, position.y, position.z, 1));
-                    mat.SetFloat("_ScanRadius", radius);
-
-                    StartCoroutine(FadeMaterialRadius(mat, radius, scanFadeDuration));
+                    StartCoroutine(AnimateScanWave(mat, radius, scanFadeDuration));
                 }
             }
-
         }
     }
+
+    private IEnumerator AnimateScanWave(Material material, float maxRadius, float duration)
+    {
+        if (!material.HasProperty("_ScanRadius"))
+        {
+            Debug.LogError($"Material '{material.name}' does not have the '_ScanRadius' property.");
+            yield break;
+        }
+
+        float elapsedTime = 0f;
+        float waveSpeed = 15f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime * waveSpeed;
+            float newRadius = Mathf.Lerp(0f, maxRadius, elapsedTime / duration);
+            material.SetFloat("_ScanRadius", newRadius);
+
+            if (material.HasProperty("_ScanWave"))
+            {
+                float waveStrength = Mathf.Sin(elapsedTime * Mathf.PI);
+                material.SetFloat("_ScanWave", waveStrength);
+            }
+
+            yield return null;
+        }
+
+        material.SetFloat("_ScanRadius", maxRadius);
+    }
+
 
     private void ResetScannableObjects()
     {
