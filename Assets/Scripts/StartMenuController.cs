@@ -3,7 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class StartMenuController : MonoBehaviour
 {
-   public void OnStartClick()
+    public void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void OnStartClick()
     {
         SceneManager.LoadScene("SampleScene");
     }
