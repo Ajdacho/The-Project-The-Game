@@ -4625,6 +4625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176433028c200e34094e039b3aa08ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  note: {fileID: 1026265116}
   footstepsSound: {fileID: 327484650}
 --- !u!64 &331417278
 MeshCollider:
@@ -10702,6 +10703,7 @@ MonoBehaviour:
     We\u2019re leaving.  \u2013 Foreman J. Richter"
   noteUI: {fileID: 1941839047}
   noteContent: {fileID: 1127691781}
+  pauseMenu: {fileID: 0}
 --- !u!65 &748838014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11467,6 +11469,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 1003081592}
   audioMixer: {fileID: 24100000, guid: afe9906c9e4c2d8429f4221be5e052f8, type: 2}
   resolutionDropdown: {fileID: 153136631}
+  Note: {fileID: 0}
 --- !u!1 &827876952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 281855664364225751, guid: 64a58ef358a452d49989afe28e261393, type: 3}
@@ -13793,6 +13796,7 @@ MonoBehaviour:
     food.  Good days lie ahead.  \u2013 Foreman J. Richter"
   noteUI: {fileID: 1941839047}
   noteContent: {fileID: 1127691781}
+  pauseMenu: {fileID: 0}
 --- !u!114 &1017685037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13924,6 +13928,7 @@ MonoBehaviour:
   noteText: 
   noteUI: {fileID: 1941839047}
   noteContent: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!1 &1031838855 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8009987137999418058, guid: 7bb3c068e1fbc3d4cb248fa59df3517e, type: 3}
@@ -15495,6 +15500,7 @@ MonoBehaviour:
     great fortune?  \u2013 Foreman J. Richter"
   noteUI: {fileID: 1941839047}
   noteContent: {fileID: 1127691781}
+  pauseMenu: {fileID: 0}
 --- !u!65 &1104092475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16589,6 +16595,7 @@ MonoBehaviour:
     one will ever kn\u2026  \u2013 Foreman J. Richter"
   noteUI: {fileID: 1941839047}
   noteContent: {fileID: 1127691781}
+  pauseMenu: {fileID: 0}
 --- !u!65 &1164657461
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20368,6 +20375,7 @@ MonoBehaviour:
     just crystals in there.  \u2013 Foreman J. Richter"
   noteUI: {fileID: 1941839047}
   noteContent: {fileID: 1127691781}
+  pauseMenu: {fileID: 0}
 --- !u!65 &1565740512
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21862,6 +21870,7 @@ MonoBehaviour:
     the crystals. Foolish superstitions.  We must go deeper.  \u2013 Foreman J. Richter"
   noteUI: {fileID: 1941839047}
   noteContent: {fileID: 1127691781}
+  pauseMenu: {fileID: 0}
 --- !u!1 &1655329007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 39e08eb85b9dc4e44bd4b6cc9d693c49, type: 3}
@@ -27333,6 +27342,7 @@ MonoBehaviour:
     food.  Good days lie ahead.  \u2013 Foreman J. Richter"
   noteUI: {fileID: 1941839047}
   noteContent: {fileID: 1127691781}
+  pauseMenu: {fileID: 0}
 --- !u!114 &2104640703
 MonoBehaviour:
   m_ObjectHideFlags: 0

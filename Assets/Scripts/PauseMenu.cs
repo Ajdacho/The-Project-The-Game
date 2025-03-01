@@ -13,6 +13,8 @@ public class PauseMenu : MonoBehaviour
     public Dropdown resolutionDropdown;
     AudioManager AudioManager;
     Resolution[] resolutions;
+
+    public Note Note;
     void Start()
     {
         pauseMenuUI.SetActive(false);
@@ -39,13 +41,20 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (Note.isNoteOpen)
             {
-                gameResume();
+                Debug.Log("LETSGOOOOOOO");
             }
             else
             {
-                gamePause();
+                if (isPaused)
+                {
+                    gameResume();
+                }
+                else
+                {
+                    gamePause();
+                }
             }
         }
     }
