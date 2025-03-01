@@ -10,6 +10,7 @@ public class Note : MonoBehaviour
     public GameObject noteUI;
     public TMP_Text noteContent;
     private bool isPlayerNearby = false;
+    PauseMenu pauseMenu;
 
     void Start()
     {
@@ -42,6 +43,8 @@ public class Note : MonoBehaviour
 
     public void OpenNote()
     {
+        Debug.Log("megustalamaniana");
+        Cursor.lockState = CursorLockMode.Confined;
         noteUI.SetActive(true);
         noteContent.text = noteText;
         Time.timeScale = 0f;
@@ -50,9 +53,10 @@ public class Note : MonoBehaviour
 
     public void CloseNote()
     {
-        noteUI.SetActive(false);  // Ukrywa notatkê
-        Time.timeScale = 1f;  // Wznawia grê
-        Debug.Log("Note closed.");
+        Cursor.lockState = CursorLockMode.Locked;
+        noteUI.SetActive(false);  // Ukrywa notatke
+        Time.timeScale = 1f;  // Wznawia gre
+        Debug.Log("LETS GOOOOOOOOOOOO");
     }
 
 }

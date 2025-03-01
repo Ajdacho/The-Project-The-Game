@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip Audio_Paper;
     public AudioClip Audio_Explosion;
     public AudioClip Audio_Fire;
+    public AudioClip Audio_Building;
+    public AudioClip Audio_Door;
 
     public void PlaySFX(AudioClip clip)
     {

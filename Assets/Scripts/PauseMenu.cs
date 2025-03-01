@@ -66,11 +66,6 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
     }
 
-    public void gameLoadSettings()
-    {
-
-    }
-
     public void gameExit()
     {
 #if UNITY_EDITOR
