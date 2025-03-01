@@ -10782,6 +10782,7 @@ MonoBehaviour:
   scanFadeDuration: 3
   scanCooldown: 2
   firstScan: 1
+  PauseMenu: {fileID: 827501403}
 --- !u!64 &753113272
 MeshCollider:
   m_ObjectHideFlags: 0

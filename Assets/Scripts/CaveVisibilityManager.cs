@@ -9,6 +9,7 @@ public class CaveVisibilityManager : MonoBehaviour
     public float scanFadeDuration = 1f;
     public float scanCooldown = 2f;
     public bool firstScan = true;
+    public PauseMenu PauseMenu;
 
     private Transform player;
     private Inventory playerInventory;
@@ -73,7 +74,7 @@ public class CaveVisibilityManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.CompareTag("Pickupable"))
+                if (hit.collider.CompareTag("Pickupable") && !PauseMenu.isPaused)
                 {
                     hit.collider.GetComponent<PickupItem>().Pickup();
                 }
