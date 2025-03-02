@@ -5604,7 +5604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b682ee6161f9664a8e1706e46091901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 5
   gravity: -9.81
   jumpHeight: 1
 --- !u!114 &327484648
@@ -5619,14 +5619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366407264316f3c41822bc6e64fadaaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 3089535113349894686}
-  - {fileID: 2808788881767699435}
-  - {fileID: 4321782701076463345}
-  - {fileID: 608606138}
-  - {fileID: 1760827704}
-  - {fileID: 1136947646}
-  - {fileID: 1096598534}
+  items: []
 --- !u!143 &327484649
 CharacterController:
   m_ObjectHideFlags: 0
