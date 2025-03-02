@@ -4,19 +4,20 @@ public class PickupItem : MonoBehaviour
 {
     public Material highlightMaterial;
     private Material originalMaterial;
-    private Renderer renderer;
     private Renderer[] renderers;
+    private Transform player;
+    private float pickupRange = 5f;
 
     AudioManager AudioManager;
 
     private void Awake()
     {
         AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Start()
     {
-        renderer = GetComponent<Renderer>();
         renderers = GetComponentsInChildren<Renderer>();
         if (renderers.Length > 0 && renderers[0] != null)
         {
@@ -31,7 +32,7 @@ public class PickupItem : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (renderers != null && highlightMaterial != null)
+        if (IsPlayerInRange() && renderers != null && highlightMaterial != null)
         {
             foreach (Renderer r in renderers)
             {
@@ -50,8 +51,15 @@ public class PickupItem : MonoBehaviour
             }
         }
     }
+
     public void Pickup()
     {
+        if (!IsPlayerInRange())
+        {
+            Debug.LogWarning("Player is too far to pick up the item!");
+            return;
+        }
+
         if (!CompareTag("Pickupable"))
         {
             Debug.LogError($"Object {gameObject.name} does not have the 'Pickupable' tag!");
@@ -77,5 +85,10 @@ public class PickupItem : MonoBehaviour
         {
             note.OpenNote();
         }
+    }
+
+    private bool IsPlayerInRange()
+    {
+        return Vector3.Distance(transform.position, player.position) <= pickupRange;
     }
 }
