@@ -9,7 +9,7 @@ public class BridgeActivator : MonoBehaviour
     public float activationDistance = 15f;
     public Inventory playerInventory;
     public TextMeshPro messageText;
-    public CaveVisibilityManager caveVisibilityManager; // Referencja do mened¿era skanowania
+    public CaveVisibilityManager caveVisibilityManager;
 
     void Update()
     {
@@ -22,7 +22,6 @@ public class BridgeActivator : MonoBehaviour
                 destroyedBridge.SetActive(false);
                 bridge.SetActive(true);
 
-                // Po aktywacji mostu, przeprowadzamy skan na podstawie ostatniego skanu
                 Vector3 lastScanPosition = caveVisibilityManager.GetLastScanPosition();
                 if (lastScanPosition != Vector3.zero)
                 {

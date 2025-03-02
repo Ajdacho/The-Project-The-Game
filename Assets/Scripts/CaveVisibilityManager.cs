@@ -17,7 +17,7 @@ public class CaveVisibilityManager : MonoBehaviour
 
     AudioManager AudioManager;
 
-    private Vector3 lastScanPosition; // Zmienna przechowuj¹ca pozycjê ostatniego skanowania
+    private Vector3 lastScanPosition;
 
     private void Awake()
     {
@@ -91,7 +91,7 @@ public class CaveVisibilityManager : MonoBehaviour
                 {
                     RevealArea(hit.point, scanRadius);
                     lastScanTime = Time.time;
-                    lastScanPosition = hit.point; // Zapisanie pozycji ostatniego skanowania
+                    lastScanPosition = hit.point;
                 }
             }
         }
@@ -197,8 +197,6 @@ public class CaveVisibilityManager : MonoBehaviour
             }
         }
     }
-
-    // Metoda zwracaj¹ca ostatni¹ pozycjê skanowania
     public Vector3 GetLastScanPosition()
     {
         return lastScanPosition;
