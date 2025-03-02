@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class CaveVisibilityManager : MonoBehaviour
 {
     public Material scannableMaterial;
@@ -17,6 +16,8 @@ public class CaveVisibilityManager : MonoBehaviour
     private List<Renderer> scannableRenderers = new List<Renderer>();
 
     AudioManager AudioManager;
+
+    private Vector3 lastScanPosition; // Zmienna przechowuj¹ca pozycjê ostatniego skanowania
 
     private void Awake()
     {
@@ -90,11 +91,11 @@ public class CaveVisibilityManager : MonoBehaviour
                 {
                     RevealArea(hit.point, scanRadius);
                     lastScanTime = Time.time;
+                    lastScanPosition = hit.point; // Zapisanie pozycji ostatniego skanowania
                 }
             }
         }
     }
-
 
     private bool PlayerHasScanner()
     {
@@ -108,7 +109,7 @@ public class CaveVisibilityManager : MonoBehaviour
         return hasScanner;
     }
 
-    private void RevealArea(Vector3 position, float radius)
+    public void RevealArea(Vector3 position, float radius)
     {
         ResetScannableObjects();
 
@@ -174,7 +175,6 @@ public class CaveVisibilityManager : MonoBehaviour
         material.SetFloat("_ScanRadius", maxRadius);
     }
 
-
     private void ResetScannableObjects()
     {
         Vector4 resetPosition = new Vector4(0, 100, 0);
@@ -198,25 +198,9 @@ public class CaveVisibilityManager : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeMaterialRadius(Material material, float targetRadius, float duration)
+    // Metoda zwracaj¹ca ostatni¹ pozycjê skanowania
+    public Vector3 GetLastScanPosition()
     {
-        if (!material.HasProperty("_ScanRadius"))
-        {
-            Debug.LogError($"Material '{material.name}' does not have the '_ScanRadius' property.");
-            yield break;
-        }
-
-        float currentRadius = material.GetFloat("_ScanRadius");
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float newRadius = Mathf.Lerp(currentRadius, targetRadius, elapsedTime / duration);
-            material.SetFloat("_ScanRadius", newRadius);
-            yield return null;
-        }
-
-        material.SetFloat("_ScanRadius", targetRadius);
+        return lastScanPosition;
     }
 }

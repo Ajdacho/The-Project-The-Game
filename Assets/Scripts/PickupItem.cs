@@ -5,15 +5,13 @@ public class PickupItem : MonoBehaviour
     public Material highlightMaterial;
     private Material originalMaterial;
     private Renderer[] renderers;
-    private Transform player;
-    public float pickupRange = 5f;
+    private AudioManager AudioManager;
 
-    AudioManager AudioManager;
+    public float pickupRange = 5f;
 
     private void Awake()
     {
         AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Start()
@@ -32,15 +30,28 @@ public class PickupItem : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, player.position) > pickupRange)
+        // Sprawdzenie, czy gracz jest w zasiêgu i podœwietlenie
+        if (Vector3.Distance(transform.position, Camera.main.transform.position) <= pickupRange)
         {
-            ResetMaterial();
+            // Aktywowanie efektu hover
+            OnMouseEnter();
+
+            // Sprawdzenie, czy klikniêto przycisk do podniesienia przedmiotu
+            if (Input.GetMouseButtonDown(0))  // Lewy przycisk myszy
+            {
+                Pickup();
+            }
+        }
+        else
+        {
+            // Wy³¹czenie efektu hover, jeœli gracz jest poza zasiêgiem
+            OnMouseExit();
         }
     }
 
     private void OnMouseEnter()
     {
-        if (Vector3.Distance(transform.position, player.position) <= pickupRange && highlightMaterial != null)
+        if (renderers != null && highlightMaterial != null)
         {
             foreach (Renderer r in renderers)
             {
@@ -50,11 +61,6 @@ public class PickupItem : MonoBehaviour
     }
 
     private void OnMouseExit()
-    {
-        ResetMaterial();
-    }
-
-    private void ResetMaterial()
     {
         if (renderers != null)
         {
@@ -69,11 +75,7 @@ public class PickupItem : MonoBehaviour
     {
         if (!CompareTag("Pickupable"))
         {
-            return;
-        }
-
-        if (Vector3.Distance(transform.position, player.position) > pickupRange)
-        {
+            Debug.LogError($"Object {gameObject.name} does not have the 'Pickupable' tag!");
             return;
         }
 
@@ -87,6 +89,7 @@ public class PickupItem : MonoBehaviour
         }
         else
         {
+            Debug.LogError("Inventory system not found in the scene!");
             return;
         }
 

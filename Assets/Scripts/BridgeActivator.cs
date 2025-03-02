@@ -1,16 +1,15 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI; 
 
 public class BridgeActivator : MonoBehaviour
 {
-    public GameObject destroyedBridge;   
-    public GameObject bridge;          
-    public GameObject player;         
-    public float activationDistance = 15f; 
+    public GameObject destroyedBridge;
+    public GameObject bridge;
+    public GameObject player;
+    public float activationDistance = 15f;
     public Inventory playerInventory;
     public TextMeshPro messageText;
-
+    public CaveVisibilityManager caveVisibilityManager; // Referencja do mened¿era skanowania
 
     void Update()
     {
@@ -22,6 +21,13 @@ public class BridgeActivator : MonoBehaviour
             {
                 destroyedBridge.SetActive(false);
                 bridge.SetActive(true);
+
+                // Po aktywacji mostu, przeprowadzamy skan na podstawie ostatniego skanu
+                Vector3 lastScanPosition = caveVisibilityManager.GetLastScanPosition();
+                if (lastScanPosition != Vector3.zero)
+                {
+                    caveVisibilityManager.RevealArea(lastScanPosition, caveVisibilityManager.scanRadius);
+                }
 
                 messageText.gameObject.SetActive(false);
             }
@@ -37,3 +43,4 @@ public class BridgeActivator : MonoBehaviour
         }
     }
 }
+

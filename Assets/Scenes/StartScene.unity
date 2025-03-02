@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 555285703}
   - component: {fileID: 555285702}
   m_Layer: 5
-  m_Name: "TU MA BY\u0106 TYTU\u0141 GRY"
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1518,7 +1518,7 @@ GameObject:
   - component: {fileID: 2127582360}
   - component: {fileID: 2127582359}
   m_Layer: 5
-  m_Name: 'TU WRZUC OBRAZ '
+  m_Name: Img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
