@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class footsteps : MonoBehaviour
 {
+    public PauseMenu pauseMenu;
     public Note note;
     public AudioSource footstepsSound;
     private bool isWaiting = false;
 
     void Update()
     {
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && !isWaiting && !Note.isNoteOpen)
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && !isWaiting && !Note.isNoteOpen && !PauseMenu.isPaused)
         {
             if (Input.GetKey(KeyCode.Space) && !isWaiting)
             {

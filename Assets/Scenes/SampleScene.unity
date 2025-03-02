@@ -5761,6 +5761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176433028c200e34094e039b3aa08ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 827501403}
   note: {fileID: 1026265116}
   footstepsSound: {fileID: 327484650}
 --- !u!1001 &333176293
