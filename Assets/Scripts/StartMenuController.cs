@@ -5,11 +5,13 @@ public class StartMenuController : MonoBehaviour
 {
     public void Start()
     {
+        Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void OnStartClick()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("SampleScene");
     }
 
