@@ -3984,7 +3984,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ea2883653e5398740ba5880454e5e0b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1350169692}
   m_SourcePrefab: {fileID: 100100000, guid: ea2883653e5398740ba5880454e5e0b1, type: 3}
 --- !u!1 &289959258
 GameObject:
@@ -4457,7 +4460,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 2.597, z: 5.813}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 965418017}
@@ -9462,6 +9465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!4 &608606142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 67f67dda1cf27d34f89f5f6834873775, type: 3}
@@ -9511,6 +9515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!135 &624453767
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9922,7 +9927,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9f16f8b05b0c184da259e12270972c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1591146898}
   m_SourcePrefab: {fileID: 100100000, guid: f9f16f8b05b0c184da259e12270972c7, type: 3}
 --- !u!1 &672076805 stripped
 GameObject:
@@ -10738,6 +10746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!64 &750534286
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11126,6 +11135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!95 &792696227
 Animator:
   serializedVersion: 7
@@ -13133,7 +13143,7 @@ Transform:
   m_GameObject: {fileID: 965418016}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13811,6 +13821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 5
 --- !u!65 &1017685039
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15136,6 +15147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!135 &1096598538
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15536,6 +15548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!1 &1114265960
 GameObject:
   m_ObjectHideFlags: 0
@@ -16199,6 +16212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!114 &1136947649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16212,6 +16226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!135 &1136947650
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16631,6 +16646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!1 &1164669751
 GameObject:
   m_ObjectHideFlags: 0
@@ -18295,6 +18311,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dc8c659b692b02a4a835f9c9ea6c318f, type: 3}
   m_PrefabInstance: {fileID: 1347846869}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1350169689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ea2883653e5398740ba5880454e5e0b1, type: 3}
+  m_PrefabInstance: {fileID: 285564040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1350169692
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350169689}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 289301614986012343, guid: ea2883653e5398740ba5880454e5e0b1, type: 3}
 --- !u!1 &1350931104 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8485173162082002552, guid: e9db40186db02ac40ac29d4ece2d9823, type: 3}
@@ -18524,6 +18567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!135 &1394495622
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20411,6 +20455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!1 &1566430587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3778644264426962316, guid: 64a58ef358a452d49989afe28e261393, type: 3}
@@ -20920,6 +20965,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5fe7d52c19682cc4fbac16f1e6c52899, type: 3}
   m_PrefabInstance: {fileID: 1590703475}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1591146895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f9f16f8b05b0c184da259e12270972c7, type: 3}
+  m_PrefabInstance: {fileID: 668024777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1591146898
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591146895}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 289301614986012343, guid: f9f16f8b05b0c184da259e12270972c7, type: 3}
 --- !u!1 &1591600931 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8416272007918961125, guid: 3380c01b7c26c544ab93d330f94833dc, type: 3}
@@ -23194,6 +23266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 5
 --- !u!135 &1760827707
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -25895,7 +25968,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: b699c309c5efdfd44a0019b5014698ef, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 4999a3ad194cd6b46bd1c35b947be179, type: 2}
+      objectReference: {fileID: 2100000, guid: c659c7571354a114797f2599b9c19de0, type: 2}
     - target: {fileID: -4683669308469848369, guid: b699c309c5efdfd44a0019b5014698ef, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -27357,6 +27430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!1001 &2104795028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38247,6 +38321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!135 &7634179140472012673
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -41409,6 +41484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!135 &8930638541573471712
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -41748,6 +41824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: a665096f70728e743b351329801add46, type: 2}
+  pickupRange: 3.048
 --- !u!135 &9184600188478286224
 SphereCollider:
   m_ObjectHideFlags: 0

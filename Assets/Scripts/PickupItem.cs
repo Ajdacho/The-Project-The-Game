@@ -4,19 +4,20 @@ public class PickupItem : MonoBehaviour
 {
     public Material highlightMaterial;
     private Material originalMaterial;
-    private Renderer renderer;
     private Renderer[] renderers;
+    private Transform player;
+    public float pickupRange = 5f;
 
     AudioManager AudioManager;
 
     private void Awake()
     {
         AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Start()
     {
-        renderer = GetComponent<Renderer>();
         renderers = GetComponentsInChildren<Renderer>();
         if (renderers.Length > 0 && renderers[0] != null)
         {
@@ -29,9 +30,17 @@ public class PickupItem : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Vector3.Distance(transform.position, player.position) > pickupRange)
+        {
+            ResetMaterial();
+        }
+    }
+
     private void OnMouseEnter()
     {
-        if (renderers != null && highlightMaterial != null)
+        if (Vector3.Distance(transform.position, player.position) <= pickupRange && highlightMaterial != null)
         {
             foreach (Renderer r in renderers)
             {
@@ -42,6 +51,11 @@ public class PickupItem : MonoBehaviour
 
     private void OnMouseExit()
     {
+        ResetMaterial();
+    }
+
+    private void ResetMaterial()
+    {
         if (renderers != null)
         {
             foreach (Renderer r in renderers)
@@ -50,11 +64,16 @@ public class PickupItem : MonoBehaviour
             }
         }
     }
+
     public void Pickup()
     {
         if (!CompareTag("Pickupable"))
         {
-            Debug.LogError($"Object {gameObject.name} does not have the 'Pickupable' tag!");
+            return;
+        }
+
+        if (Vector3.Distance(transform.position, player.position) > pickupRange)
+        {
             return;
         }
 
@@ -68,14 +87,12 @@ public class PickupItem : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Inventory system not found in the scene!");
             return;
         }
 
         Note note = gameObject.GetComponent<Note>();
         if (note != null)
         {
-            Debug.Log("Note component found, opening note...");
             note.OpenNote();
         }
     }

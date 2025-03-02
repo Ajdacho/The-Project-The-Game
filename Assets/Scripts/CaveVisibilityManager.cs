@@ -77,18 +77,24 @@ public class CaveVisibilityManager : MonoBehaviour
                 if (hit.collider.CompareTag("Pickupable") && !PauseMenu.isPaused)
                 {
                     hit.collider.GetComponent<PickupItem>().Pickup();
+                    return;
                 }
-                else
+
+                if (!PlayerHasScanner())
                 {
-                    if (Time.time >= lastScanTime + scanCooldown)
-                    {
-                        RevealArea(hit.point, scanRadius);
-                        lastScanTime = Time.time;
-                    }
+                    Debug.Log("Gracz nie posiada skanera!");
+                    return;
+                }
+
+                if (Time.time >= lastScanTime + scanCooldown)
+                {
+                    RevealArea(hit.point, scanRadius);
+                    lastScanTime = Time.time;
                 }
             }
         }
     }
+
 
     private bool PlayerHasScanner()
     {
