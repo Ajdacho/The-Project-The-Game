@@ -4,10 +4,10 @@ public class PickupItem : MonoBehaviour
 {
     public Material highlightMaterial;
     private Material originalMaterial;
+    private Renderer renderer;
     private Renderer[] renderers;
-    private AudioManager AudioManager;
 
-    public float pickupRange = 5f;
+    AudioManager AudioManager;
 
     private void Awake()
     {
@@ -16,6 +16,7 @@ public class PickupItem : MonoBehaviour
 
     private void Start()
     {
+        renderer = GetComponent<Renderer>();
         renderers = GetComponentsInChildren<Renderer>();
         if (renderers.Length > 0 && renderers[0] != null)
         {
@@ -25,27 +26,6 @@ public class PickupItem : MonoBehaviour
         if (!CompareTag("Pickupable"))
         {
             Debug.LogWarning($"Object {gameObject.name} does not have the 'Pickupable' tag!");
-        }
-    }
-
-    private void Update()
-    {
-        // Sprawdzenie, czy gracz jest w zasiêgu i podœwietlenie
-        if (Vector3.Distance(transform.position, Camera.main.transform.position) <= pickupRange)
-        {
-            // Aktywowanie efektu hover
-            OnMouseEnter();
-
-            // Sprawdzenie, czy klikniêto przycisk do podniesienia przedmiotu
-            if (Input.GetMouseButtonDown(0))  // Lewy przycisk myszy
-            {
-                Pickup();
-            }
-        }
-        else
-        {
-            // Wy³¹czenie efektu hover, jeœli gracz jest poza zasiêgiem
-            OnMouseExit();
         }
     }
 
@@ -70,7 +50,6 @@ public class PickupItem : MonoBehaviour
             }
         }
     }
-
     public void Pickup()
     {
         if (!CompareTag("Pickupable"))
