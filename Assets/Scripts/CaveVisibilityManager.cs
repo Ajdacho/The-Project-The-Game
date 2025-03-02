@@ -5,7 +5,7 @@ public class CaveVisibilityManager : MonoBehaviour
 {
     public Material scannableMaterial;
     public float scanRadius = 9f;
-    public float scanFadeDuration = 1f;
+    public float scanFadeDuration = 0.25f;
     public float scanCooldown = 2f;
     public bool firstScan = true;
     public PauseMenu PauseMenu;
@@ -159,21 +159,21 @@ public class CaveVisibilityManager : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            elapsedTime += Time.deltaTime * waveSpeed;
-            float newRadius = Mathf.Lerp(0f, maxRadius, elapsedTime / duration);
-            material.SetFloat("_ScanRadius", newRadius);
+            elapsedTime += Time.deltaTime;
 
-            if (material.HasProperty("_ScanWave"))
-            {
-                float waveStrength = Mathf.Sin(elapsedTime * Mathf.PI);
-                material.SetFloat("_ScanWave", waveStrength);
-            }
+            float newRadius = Mathf.Lerp(0f, maxRadius, elapsedTime / duration);
+
+            float waveStrength = Mathf.Sin(elapsedTime * waveSpeed);
+
+            material.SetFloat("_ScanRadius", newRadius);
+            material.SetFloat("_ScanWave", waveStrength); 
 
             yield return null;
         }
 
         material.SetFloat("_ScanRadius", maxRadius);
     }
+
 
     private void ResetScannableObjects()
     {
